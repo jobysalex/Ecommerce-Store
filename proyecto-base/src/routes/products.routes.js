@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { checkProductData } from "../middlewares/checkProductData.middleware.js";
 import productDao from "../dao/mongoDB/product.dao.js";
+import { authorization } from "../middlewares/authorization.middleware.js";
+import { checkProductData } from "../middlewares/checkProductData.middleware.js";
+import { passportCall } from "../middlewares/passport.middleware.js";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", passportCall("jwt"), authorization("user"), async (req, res) => {
   try {
     const { limit, page, sort, category, status } = req.query;
 

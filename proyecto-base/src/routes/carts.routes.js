@@ -1,6 +1,7 @@
 import { Router } from "express";
 import cartDao from "../dao/mongoDB/cart.dao.js";
 import productDao from "../dao/mongoDB/product.dao.js";
+import { isUserCart } from "../middlewares/isUserCart.middleware.js";
 
 const router = Router();
 
@@ -28,7 +29,7 @@ router.get("/:cid", async (req, res) => {
   }
 });
 
-router.post("/:cid/product/:pid", async (req, res) => {
+router.post("/:cid/product/:pid", isUserCart, async (req, res) => {
   try {
     const { cid, pid } = req.params;
     const product = await productDao.getById(pid);
