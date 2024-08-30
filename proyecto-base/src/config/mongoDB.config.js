@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-mongoose.connect(envs.MONGO_URL);
+import envs from "./envs.config.js";
 
 export const connectMongoDB = async () => {
   try {
@@ -8,4 +8,4 @@ export const connectMongoDB = async () => {
   } catch (error) {
     console.log(`Error: ${error}`);
   }
-}
+};

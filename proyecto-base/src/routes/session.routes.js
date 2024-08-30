@@ -1,6 +1,4 @@
 import { Router } from "express";
-import userDao from "../dao/mongoDB/user.dao.js";
-import { createHash, isValidPassword } from "../utils/hashPassword.js";
 import passport from "passport";
 import { createToken } from "../utils/jwt.js";
 import { passportCall } from "../middlewares/passport.middleware.js";
@@ -28,6 +26,7 @@ router.post("/login", passportCall("login"), async (req, res) => {
     res.status(500).json({ status: "error", msg: "Internal server error" });
   }
 });
+
 
 
 router.get(

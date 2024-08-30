@@ -1,5 +1,4 @@
 import { cartModel } from "./models/cart.model.js";
-import { productModel } from "./models/product.model.js";
 
 const getAll = async () => {
   const carts = await cartModel.find();
@@ -78,7 +77,7 @@ const updateQuantityProductInCart = async (cid, pid, quantity) => {
 
   await cart.save();
   return cart;
-}
+};
 
 const clearProductsToCart = async (cid) => {
 
@@ -89,7 +88,8 @@ const clearProductsToCart = async (cid) => {
 
   return cart;
   
-}
+};
+
 export default {
   getAll,
   getById,

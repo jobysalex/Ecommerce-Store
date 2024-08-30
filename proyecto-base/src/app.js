@@ -10,6 +10,7 @@ import envs from "./config/envs.config.js";
 import passport from "passport";
 import { initializePassport } from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(
     saveUninitialized: true, // Guarda la session
   })
 );
+app.use(cors());
 
 initializePassport();
 app.use(passport.initialize());
